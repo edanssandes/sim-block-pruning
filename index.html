@@ -170,7 +170,7 @@ function simulate() {
 			switch (gradient) {
 				case "0": cs = v/max_score; break;
 				case "1": cs = best/max_score; break;
-				case "2": cs = Math.sin(i*Math.PI/(w*h/100))/2 + 0.5; break;
+				case "2": cs = Math.sin((i*Math.PI/(w*h/100))**1.01)/2 + 0.5; break;
 			}
 			cs = 1-cs;
 		} else {
