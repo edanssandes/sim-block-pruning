@@ -15,6 +15,7 @@ function simulate() {
 	var p 	= document.getElementById("p").value
 	var angle = document.getElementById("angle").value;
 	var cycles = document.getElementById("cycles").value;
+	var init_best = document.getElementById("init_best").value;
 
 	var show_pruned_area = document.getElementById("chk_show_pruned_area").checked;
 	var show_gradient = document.getElementById("chk_show_gradient").checked;
@@ -143,7 +144,7 @@ function simulate() {
 	} 
 	console.log('>',i,w*h);
 
-	var best = 0;
+	var best = Math.floor(init_best/100*max_score);
 	var pruned_area = 0;
 	for (i = 0; i < w*h; i ++) {
 		var x = order_x[i];
@@ -367,6 +368,17 @@ Computation Order:
 <label id="cycles_label" for="cycles">Cycles:</label> 
 <input type="number" id="cycles" min="1" max="128" value="4" onchange="update();">
 <br>
+<hr>
+Initial Best Score: 
+<select id="init_best" onchange="update();">
+  <option value="0" selected="selected">0</option>
+  <option value="20">20% optimal</option>
+  <option value="40">40% optimal</option>
+  <option value="60">60% optimal</option>
+  <option value="80">80% optimal</option>
+  <option value="99">99% optimal</option>
+  <option value="100">100% optimal</option>
+</select>
 <hr>
 Show:<br>
 <input type="checkbox" id="chk_show_pruned_area" checked="true" onchange="update();">Pruned Area<br>
